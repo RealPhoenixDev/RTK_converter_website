@@ -49,3 +49,39 @@ body {
         line-height: 2.5rem;
     }
 }
+
+#username_select_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    border: #c889b5 2px solid;
+    border-radius: 8px;
+    display: none;
+}
+
+#username_select_window {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    justify-content: start;
+    header {
+        height: 2rem;
+    }
+    input {
+        border-radius: 4px;
+        height: 1.8rem;
+        border: 2px solid #c889b5;
+    }
+    accent-color: #736eae;
+    button {
+        padding: 1rem 1.5rem;
+        background-color: #736eae;
+        color: #f0f0f0;
+        border-radius: 8px;
+        border: none;
+    }
+}
