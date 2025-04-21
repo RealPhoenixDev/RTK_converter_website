@@ -2,9 +2,9 @@ const usename_span = document.getElementById("username_span");
 
 function loadUsernameData() {
     const username_window_popup = document.getElementById(
-        "username_select_container"
+        "username_popup_frame"
     );
-    var innerDoc =
+    let innerDoc =
         username_window_popup.contentDocument ||
         username_window_popup.contentWindow.document;
     const username_input = innerDoc.getElementById("username_input");
@@ -30,20 +30,3 @@ function loadUsernameData() {
 }
 
 username_span.innerHTML = localStorage.getItem("username");
-
-const data_structure_template = {
-    folder_name: [
-        {
-            task_name: "",
-            description: "",
-            tags: [],
-            date: "date",
-            color: "#FFFFFF",
-            type: "text | checkbox",
-            status: "default | pending | completed",
-        },
-        { task_name: "" },
-        { task_name: "" },
-        { task_name: "" },
-    ],
-};

@@ -6,11 +6,11 @@
         <title>Conventer tool website</title>
         <link rel="stylesheet" href="style.css" />
     </head>
-    <body>
+    <body style="position: relative">
         <div id="body_container">
             <header id="navbar">
                 <div id="nav_name">Convert</div>
-                <div id="nav_X">[-][0][X]</div>
+                <div class="nav_X">[-][0][X]</div>
             </header>
             <main>
                 <h2 id="greeting_text">
@@ -66,10 +66,16 @@
         </div>
         <!-- username popup window -->
         <iframe
-            id="username_select_container"
+            class="window_container"
+            id="username_popup_frame"
             src="username_window.html"
             title="username select popup"
             onload="loadUsernameData()"></iframe>
+        <iframe
+            src="board.html"
+            title="task_board"
+            class="window_container"
+            id="board_frame"></iframe>
     </body>
     <script src="script.js"></script>
 </html>
