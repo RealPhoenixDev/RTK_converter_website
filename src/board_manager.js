@@ -255,3 +255,5 @@ function setTaskWindowData(index) {
 }
 
 initializeAllTasks();
+
+console.log(test);
