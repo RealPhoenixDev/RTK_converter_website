@@ -1,0 +1,17 @@
+<div class="board_folder_container" id="${i}" data-folderID data-taskData>
+  <div class="task_folder" id="${folderIndex}">
+    <input
+      maxlength="28"
+      type="text"
+      class="task_folder_name"
+      id="folder_name_${folderIndex}"
+      value="${folderName}"
+    />
+    <div class="task_container" id="container_${folderIndex}">
+      <button style="order: 999" class="add_task" id="add_task_${folderIndex}">
+        Add a task
+      </button>
+    </div>
+  </div>
+</div>
+<script src="src/lib/data/folder_data_manager.js"></script>

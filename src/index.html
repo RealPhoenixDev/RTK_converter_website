@@ -1,82 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Conventer tool website</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body style="position: relative">
-        <script src="data_manager.js"></script>
-        <div id="body_container">
-            <header id="navbar">
-                <div id="nav_name">Convert</div>
-                <div class="nav_X">[-][0][X]</div>
-            </header>
-            <main>
-                <h2 id="greeting_text">
-                    Welcome back <span id="username_span"></span>!
-                </h2>
-                <div id="content">
-                    <div id="daily_tasks">
-                        <div id="daily_tasks_text">Today's tasks</div>
-                        <div class="task_folder">
-                            <div class="task_folder_name">Folder name</div>
-                            <div class="task_container">
-                                <div class="task">
-                                    <span
-                                        >Finish the project and cook me some
-                                        tasty meal</span
-                                    >
-                                    <div class="task_tags">
-                                        <div
-                                            class="tag"
-                                            style="border: violet 1px solid">
-                                            <div
-                                                class="tag_color"
-                                                style="
-                                                    background-color: violet;
-                                                "></div>
-                                            <div class="tag_text">school</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- remove under -->
-                                <div class="task">
-                                    <span>Do the laundry</span>
-                                    <div class="task_tags">
-                                        <div
-                                            class="tag"
-                                            style="background-color: #ec9a0d">
-                                            <div class="tag_text">home</div>
-                                        </div>
-                                        <div
-                                            class="tag"
-                                            style="background-color: #0d36ec">
-                                            <div class="tag_text">chore</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conventer tool website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="position: relative">
+    <div id="body_container">
+      <header id="navbar">
+        <div id="nav_name">Convert</div>
+        <div class="nav_X">[-][0][X]</div>
+      </header>
+      <main>
+        <h2 id="greeting_text">
+          Welcome back <span id="username_span"></span>!
+        </h2>
+        <div id="content">
+          <div id="daily_tasks">
+            <div id="daily_tasks_text">Today's tasks</div>
+            <div class="task_folder">
+              <div class="task_folder_name">Folder name</div>
+              <div class="task_container">
+                <div class="task">
+                  <span>Finish the project and cook me some tasty meal</span>
+                  <div class="task_tags">
+                    <div class="tag" style="border: violet 1px solid">
+                      <div
+                        class="tag_color"
+                        style="background-color: violet"
+                      ></div>
+                      <div class="tag_text">school</div>
                     </div>
-                    <div id="perf_chart_container">hello world</div>
-                    <div id="view_tasks"></div>
+                  </div>
                 </div>
-            </main>
+                <!-- remove under -->
+                <div class="task">
+                  <span>Do the laundry</span>
+                  <div class="task_tags">
+                    <div class="tag" style="background-color: #ec9a0d">
+                      <div class="tag_text">home</div>
+                    </div>
+                    <div class="tag" style="background-color: #0d36ec">
+                      <div class="tag_text">chore</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="perf_chart_container">hello world</div>
+          <div id="view_tasks"></div>
         </div>
-        <!-- username popup window -->
-        <iframe
-            class="window_container"
-            id="username_popup_frame"
-            src="username_window.html"
-            title="username select popup"
-            onload="loadUsernameData()"></iframe>
-        <iframe
-            src="board.html"
-            title="task_board"
-            class="window_container"
-            id="board_frame"></iframe>
-    </body>
-    <script src="script.js"></script>
+      </main>
+    </div>
+    <!-- username popup window -->
+    <iframe
+      class="window_container"
+      id="username_popup_frame"
+      src="username_window.html"
+      title="username select popup"
+      onload="loadUsernameData()"
+    ></iframe>
+    <iframe
+      src="board.html"
+      title="task_board"
+      class="window_container"
+      id="board_frame"
+    ></iframe>
+  </body>
+  <script src="/src/lib/data/data_manager.js"></script>
+  <script src="script.js"></script>
 </html>
