@@ -89,6 +89,11 @@ async function insertTemplate(parent, path, id, args, script) {
         template.appendChild(scriptElem);
     }
 }
+
+function removeTemplate(id) {
+    document.getElementById(id).remove();
+}
+
 // folderID - ID of a specific folder.
 // taskID - ID of a specific task in any board.
 // globalID - ID of a specific task in a specific board.
