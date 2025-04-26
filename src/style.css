@@ -22,20 +22,9 @@ body {
     background-color: #f0f0f0;
 }
 
-#body_container {
-    display: flex;
-    flex-direction: column;
-    max-width: 960px;
-    width: 100%;
-    min-height: 600px;
-    height: 600px;
-    border: 2px #c889b5 solid;
-    border-radius: 8px;
-    filter: drop-shadow(0px 0px 4px #00000071);
-    background-color: #f0f0f0;
-}
+/* Start of general element styles */
 
-#navbar {
+.navbar {
     display: flex;
     align-items: center;
     padding-left: 1rem;
@@ -56,63 +45,47 @@ body {
     }
 }
 
+.window_content {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+
 .window_container {
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-}
-
-#username_popup_frame {
-    width: 300px;
-    height: 200px;
-    border: #c889b5 2px solid;
-    border-radius: 8px;
-    display: none;
-}
-
-#username_select_window {
-    display: flex;
-    gap: 16px;
-    flex-direction: column;
-    justify-content: start;
-    header {
-        height: 2rem;
-    }
-    input {
-        border-radius: 4px;
-        height: 1.8rem;
-        border: 2px solid #c889b5;
-    }
-    accent-color: #736eae;
-    button {
-        padding: 1rem 1.5rem;
-        background-color: #736eae;
-        color: #f0f0f0;
-        border-radius: 8px;
-        border: none;
-    }
-}
-
-main {
     display: flex;
     flex-direction: column;
+    background-color: #f0f0f0;
+}
+
+/* End of general element styles */
+/* Start of Greeting Window style */
+
+#mainWindowContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
     width: 100%;
-    align-items: center;
-    padding: 1rem 0.5rem;
-    height: 100%;
+    min-height: 600px;
+    height: 600px;
+    border: 2px #c889b5 solid;
+    border-radius: 8px;
+    filter: drop-shadow(0px 0px 4px #00000071);
+
     #greeting_text {
         font-weight: 400;
+        text-align: center;
+        margin: 0.5rem 0rem;
     }
 }
 
-#content {
-    margin-top: 16px;
-    padding: 8px;
+#analytics_container {
+    padding: 0.5rem;
     display: grid;
-    width: 100%;
-    height: 100%;
     grid-template-columns: repeat(3, 300px);
     grid-template-rows: repeat(4, 110px);
     gap: 8px;
@@ -133,11 +106,46 @@ main {
     gap: 8px;
 
     #daily_tasks_text {
-        margin-top: 4px;
-        width: 100%;
         text-align: center;
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+        margin: 0.5rem 0rem;
+        font-size: 1.1rem;
+    }
+}
+
+#perf_chart_container {
+    grid-column: 2 / span 2;
+    grid-row: 3 / span 2;
+    background-color: red;
+}
+
+/* End of Greeting Window style */
+/* Start of Username Window style  */
+
+#usernameWindowContainer {
+    width: 300px;
+    height: 200px;
+    border: #c889b5 2px solid;
+    border-radius: 8px;
+    display: none;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    header {
+        height: 2rem;
+    }
+    input {
+        border-radius: 4px;
+        height: 1.8rem;
+        border: 2px solid #c889b5;
+    }
+    accent-color: #736eae;
+    button {
+        padding: 1rem 1.5rem;
+        background-color: #736eae;
+        color: #f0f0f0;
+        border-radius: 8px;
+        border: none;
+        width: 90%;
     }
 }
 
@@ -149,28 +157,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    /* background-color: #e0e0e0; */
     padding: 8px;
-}
-
-.task_folder {
-    width: 100%;
-    overflow-wrap: anywhere;
-    background-color: #f0f0f0;
-    border: #d4cdcd 2px solid;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-
-    .task_folder_name {
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem 0rem;
-        border: none;
-        background-color: #f0f0f0;
-        font-size: 1rem;
-        overflow-wrap: break-word;
-    }
 }
 
 .task {
@@ -184,6 +171,7 @@ main {
     justify-content: space-around;
     gap: 12px;
     border: #736eae00 2px solid;
+    background-color: #e0e0e0;
 
     .task_tags {
         display: flex;
@@ -219,17 +207,9 @@ main {
     }
 }
 
-/* Performance chart */
-
-#perf_chart_container {
-    grid-column: 2 / span 2;
-    grid-row: 3 / span 2;
-    background-color: red;
-}
-
 /* Board page */
 
-#board_frame {
+#taskBoardContainer {
     max-width: 90svw;
     max-height: 90svh;
     width: 100%;
@@ -238,31 +218,48 @@ main {
     border-radius: 8px;
 }
 
-#board_container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 8px;
+#folder_container {
     gap: 8px;
+    display: flex;
     overflow: scroll;
 }
 
-.board_folder_container {
+.folder_element {
     min-width: 300px;
     max-width: 300px;
     min-height: 120px;
     height: fit-content;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    border: #d4cdcd 2px solid;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    overflow-wrap: anywhere;
     #folder_create_button {
-        justify-self: flex-end;
-        width: 3rem;
-        height: 3rem;
+        width: 100%;
+        height: 100%;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+            justify-self: flex-end;
+            width: 3rem;
+            height: 3rem;
+            border: none;
+            border-radius: 4rem;
+            background-color: #d0adc4;
+            filter: drop-shadow(2px 2px 2px #00000036);
+        }
+    }
+    .task_folder_name {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0rem;
         border: none;
-        border-radius: 4rem;
-        background-color: #d0adc4;
-        filter: drop-shadow(2px 2px 2px #00000036);
+        background-color: #f0f0f0;
+        font-size: 1rem;
+        overflow-wrap: break-word;
     }
 }
 

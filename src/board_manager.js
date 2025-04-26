@@ -103,19 +103,7 @@ function createFolderWithData(folderName) {
         "folder_name_" + folderIndex
     );
     const addTaskButton = document.getElementById("add_task_" + folderIndex);
-    //Event to assign a new element to the task array when create task button is pressed
-    addTaskButton.addEventListener("click", (e) => {
-        const taskArrayLength = data_structure_template[folderName].push({
-            task_name: "Task name",
-            description: "",
-            date: Date.now(),
-            tags: [],
-            color: "#F1F1F1",
-        });
-        activeIndex = folderIndex + "," + (taskArrayLength - 1);
-        setTaskWindowData(folderIndex + "," + (taskArrayLength - 1));
-        loadSpecificTask(activeIndex);
-    });
+
     // When user changes the name of the folder, automatically update it in the data
     folderNameElement.addEventListener("input", (e) => {
         data_structure_template[folderName]["folderName"] = e.target.value;
@@ -254,6 +242,4 @@ function setTaskWindowData(index) {
     task_popup_frame.style.display = "block";
 }
 
-initializeAllTasks();
-
-console.log(test);
+// initializeAllTasks();
