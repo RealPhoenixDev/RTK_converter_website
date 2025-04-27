@@ -10,6 +10,11 @@
         <div class="window_container" id="mainWindowContainer"></div>
         <div class="window_container" id="usernameWindowContainer"></div>
         <div class="window_container" id="taskBoardContainer"></div>
+        <div class="window_container" id="tagSelectContainer"></div>
+        <div
+            class="window_container taskWindowContainer"
+            id="taskWindowContainer"
+            style="display: none"></div>
     </body>
     <script src="/src//lib/data/window_loader.js"></script>
     <script src="/src/lib/data/data_manager.js"></script>
@@ -33,6 +38,16 @@
         }
         document.addEventListener("loaded", () => {
             test();
+            insertScript(
+                document.body,
+                "taskInfoScr",
+                "/src/lib/data/task_info_manager.js"
+            );
+            insertScript(
+                document.body,
+                "tagSelectScr",
+                "/src/lib/data/tag_manager.js"
+            );
         });
     </script>
 </html>

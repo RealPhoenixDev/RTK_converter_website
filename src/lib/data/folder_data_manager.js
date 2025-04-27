@@ -21,35 +21,43 @@ createTaskButtonArray = [];
 createTaskButtonArray.push(document.getElementById(_folderID + "_newTaskBtn"));
 
 // Initializes all tasks in all folder
-i = 0;
+i = -1;
 folderDataArray.forEach((folder) => {
     const taskContainer = taskContainerArray.at(-1);
     const folderID = folderIDArray.at(-1);
-    folder.forEach((task) => {
-        insertTemplate(
+    folder.forEach(async (task) => {
+        i++;
+        const globalID = folderID + "," + i;
+        await insertTemplate(
             taskContainer,
             "/src/lib/templates/task.html",
-            folderID + "," + i,
+            globalID,
             { task_name: task["task_name"] },
             "/src/lib/data/task_data_manager.js"
         );
-        i++;
+        const scriptElement = document.getElementById(globalID + "_Scr");
+        await passDataToScript(scriptElement, { taskData: true }, globalID);
     });
-    i = 0;
 });
 
 createTaskButtonArray.forEach((button) => {
-    const folderID = folderIDArray.at(-1);
     const taskContainer = taskContainerArray.at(-1);
-    button.addEventListener("click", (e) => {
+    const folderID = folderIDArray.at(-1);
+    button.addEventListener("click", async (e) => {
+        console.log(data_temp);
+        const taskCount = getTaskCount(folderID);
         taskContainerArray.push(taskTemp);
+        const newTaskID = folderID + "," + taskCount;
         addTask(taskTemp, folderID);
-        insertTemplate(
+        console.log(taskContainerArray.length - 1);
+        await insertTemplate(
             taskContainer,
             "/src/lib/templates/task.html",
-            folderID + "," + taskContainerArray.length - 1,
+            newTaskID,
             { task_name: taskTemp["task_name"] },
             "/src/lib/data/task_data_manager.js"
         );
+        const scriptElement = document.getElementById(newTaskID + "_Scr");
+        await passDataToScript(scriptElement, { taskData: true }, newTaskID);
     });
 });

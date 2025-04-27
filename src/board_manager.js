@@ -204,23 +204,6 @@ function loadTaskWindowData() {
             Object.keys(data_structure_template)[parsedActiveIndex[0]]
         ][parsedActiveIndex[1]]["description"] = e.target.value;
     });
-    inputTaskColor.addEventListener("input", (e) => {
-        if (e.target.value.match("^#(?:[0-9a-fA-F]{3}){1,2}$")) {
-            e.target.style.accentColor = "green";
-            const parsedActiveIndex = activeIndex.split(",");
-            data_structure_template[
-                Object.keys(data_structure_template)[parsedActiveIndex[0]]
-            ][parsedActiveIndex[1]]["color"] = e.target.value;
-            const taskObject = document.getElementById(activeIndex);
-            taskObject.style.backgroundColor = e.target.value + "FF";
-        } else {
-            e.target.style.accentColor = "red";
-        }
-    });
-    const closePopup = innerDoc.getElementById("task_popup_X");
-    closePopup.addEventListener("click", (e) => {
-        task_popup_frame.style.display = "none";
-    });
 }
 
 function setTaskWindowData(index) {

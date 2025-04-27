@@ -3,6 +3,9 @@ const usernameWindowContainer = document.getElementById(
     "usernameWindowContainer"
 );
 const taskBoardContainer = document.getElementById("taskBoardContainer");
+const taskWindowContainer = document.getElementById("taskWindowContainer");
+const tagSelectContainer = document.getElementById("tagSelectContainer");
+
 const loadedEvent = new Event("loaded");
 
 // fetches the window from files and converts it into text
@@ -23,6 +26,13 @@ async function loadWindows() {
     const taskBoardWindow = await getWindow("/src/lib/windows/taskBoard.html");
     taskBoardContainer.insertAdjacentHTML("afterbegin", taskBoardWindow);
 
+    const taskWindow = await getWindow("/src/lib/windows/taskInfo.html");
+    taskWindowContainer.insertAdjacentHTML("afterbegin", taskWindow);
+
+    const tagSelectWindow = await getWindow(
+        "/src/lib/windows/tagSelectWindow.html"
+    );
+    tagSelectContainer.insertAdjacentHTML("afterbegin", tagSelectWindow);
     document.dispatchEvent(loadedEvent);
 }
 

@@ -37,20 +37,8 @@ function getFolderIndexKey(index) {
 }
 
 function getTaskCount(folderID) {
-    const folderData = data_temp[getfolderIndexKey(folderID)];
+    const folderData = data_temp[getFolderIndexKey(folderID)];
     return folderData.length;
-}
-
-function setFolder(data, name) {
-    data_temp[name] = data;
-}
-
-function addTask(data, folderID) {
-    data_temp[getFolderIndexKey(folderID)].push(data);
-}
-
-function updateTask(data, globalID) {
-    data_temp[getFolderIndexKey(globalID["fID"])][globalID["sID"]] = data;
 }
 
 function parseID(id) {
@@ -58,12 +46,34 @@ function parseID(id) {
     const globalID = attributes[0].split(",");
     const parsedGlobalID = { fID: globalID[0], sID: globalID[1] };
 
-    if (attributes.length >= 3 && attributes.length % 2 == 1) {
+    if (attributes.length > 2 && attributes.length % 2 == 1) {
         for (let i = 1; i < attributes.length; i += 2) {
             parsedGlobalID[attributes[i]] = attributes[i + 1];
         }
     }
     return parsedGlobalID;
+}
+
+function setFolderData(data, name) {
+    data_temp[name] = data;
+}
+
+function addTask(data, folderID) {
+    data_temp[getFolderIndexKey(folderID)].push(data);
+}
+
+function setTaskData(data, globalID) {
+    globalID = parseID(globalID);
+    data_temp[getFolderIndexKey(globalID["fID"])][globalID["sID"]] = data;
+}
+
+function getFolderData(folderID) {
+    return data_temp[getFolderIndexKey(folderID)];
+}
+
+function getTaskData(globalID) {
+    const parsedID = parseID(globalID);
+    return data_temp[getFolderIndexKey(parsedID["fID"])][parsedID["sID"]];
 }
 
 // fetches the folder template from files and converts it into text
@@ -90,6 +100,14 @@ async function insertTemplate(parent, path, id, args, script) {
     }
 }
 
+function insertScript(parent, id, path) {
+    const scriptElem = document.createElement("script");
+    scriptElem.id = id;
+    scriptElem.setAttribute("src", path);
+    scriptElem.setAttribute("elemID", id);
+    return parent.appendChild(scriptElem);
+}
+
 function removeTemplate(id) {
     document.getElementById(id).remove();
 }
@@ -110,7 +128,7 @@ async function passDataToScript(script, data, id) {
             return;
         } else if (data["taskData"]) {
             script.setAttribute(
-                "folderData",
+                "taskData",
                 JSON.stringify(
                     data_temp[getFolderIndexKey(parsedID["fID"])][
                         parsedID["sID"]
