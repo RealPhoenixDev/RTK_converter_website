@@ -1,14 +1,15 @@
 <header class="navbar">
-    <div>Username select</div>
-    <div class="nav_X" style="line-height: 2rem">[X]</div>
+    <div>Create/Edit</div>
+    <div class="nav_X" id="tagCreateWindowClose">[X]</div>
 </header>
 <div class="window_content">
-    <p>Enter your username</p>
-    <input id="tagNameInput" type="text" maxlength="50" />
+    <span>Tag name</span>
+    <input id="tagNameInput" type="text" maxlength="15" />
+    <span>Tag color</span>
     <input
         id="tagColorInput"
         class="color_select"
         type="color"
-        maxlength="50" />
+        value="#FFFFFF" />
     <button id="tagCreateSubmit">Submit</button>
 </div>

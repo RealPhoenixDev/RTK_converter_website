@@ -1,10 +1,13 @@
 <div id="{id}" class="folder_element {class}">
-    <input
-        maxlength="28"
-        type="text"
-        class="task_folder_name"
-        id="{id}_N"
-        value="{folderName}" />
+    <div class="folder_header">
+        <input
+            maxlength="28"
+            type="text"
+            class="task_folder_name"
+            id="{id}_N"
+            value="{folderName}" />
+        <button id="{id}_R">X</button>
+    </div>
     <div class="task_container" id="{id}_C">
         <button style="order: 999" class="add_task" id="{id}_newTaskBtn">
             Add a task

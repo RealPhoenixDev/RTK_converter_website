@@ -1,61 +1,134 @@
 const element = document.getElementById("taskWindowContainer");
+const tagSelectWindow = document.getElementById("tagSelectContainer");
+const tagSelectScript = document.getElementById("tagSelectScr");
 
-// const task = document.getElementById("1,0");
-
-// const target = document.getElementById("myElement");
 const self = document.currentScript;
 
 //Window field elements
 const taskNameElem = document.getElementById("inputTaskName");
 const taskDescElem = document.getElementById("inputTaskDesc");
 const taskColorElem = document.getElementById("inputTaskColor");
+const selectTagButton = document.getElementById("selectTagButton");
+
+// Task control elements
+const moveTaskUp = document.getElementById("moveTaskUp");
+const moveTaskDown = document.getElementById("moveTaskDown");
+const removeTaskBtn = document.getElementById("removeTask");
+const saveTaskDataBtn = document.getElementById("saveTaskData");
+
 let id;
-let taskData;
+let taskWindowData;
 
 // Checks for changes of the style/ display property to fetch data of selected task
-const observer = new MutationObserver((mutationsList) => {
-  for (const mutation of mutationsList) {
-    if (mutation.type === "attributes" && mutation.attributeName === "style") {
-      id = JSON.parse(self.getAttribute("taskID"));
-      taskData = JSON.parse(self.getAttribute("taskData"));
-      insertData(taskData);
+const taskInfoObserver = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+        if (
+            mutation.type === "attributes" &&
+            mutation.attributeName === "style" &&
+            element.style.display === "flex"
+        ) {
+            lastActiveWindow = activeWindow;
+            activeWindow = "taskInfoWindow";
+            id = JSON.parse(self.getAttribute("taskID"));
+            taskWindowData = JSON.parse(self.getAttribute("taskData"));
+            insertData(taskWindowData);
+        }
     }
-  }
 });
 
-observer.observe(element, { attributes: true, attributeFilter: ["style"] });
+taskInfoObserver.observe(element, {
+    attributes: true,
+    attributeFilter: ["style"],
+});
 
-function insertData(data) {
-  taskNameElem.value = data["task_name"];
-  taskDescElem.value = data["description"];
-  taskColorElem.value = data["color"];
+// Removes the current script and adds a new one to reload the task
+function reloadTask(globalID, taskWindowData) {
+    if (taskWindowData) setTaskData(taskWindowData, globalID);
+    document.getElementById(globalID + "_Scr").remove();
+    let taskElem = document.getElementById(globalID);
+    taskElem.replaceWith(taskElem.cloneNode(true));
+    taskElem = document.getElementById(globalID);
+    const newTaskScript = insertScript(
+        taskElem,
+        globalID + "_Scr",
+        "/src/lib/data/task_data_manager.js"
+    );
+    passDataToScript(newTaskScript, { taskData: true }, globalID);
 }
 
-const closePopup = document.getElementById("task_popup_X");
-closePopup.addEventListener("click", (e) => {
-  element.style.display = "none";
-  taskData["task_name"] = taskNameElem.value;
-  taskData["description"] = taskDescElem.value;
-  taskData["color"] = taskColorElem.value;
-  taskNameElem.value = "";
-  taskDescElem.value = "";
-  taskColorElem.value = "";
-  // Removing the current script and adding a new one to update data of a task
-  setTaskData(taskData, id["fID"] + "," + id["sID"]);
-  const oldTaskScript = document
-    .getElementById(id["fID"] + "," + id["sID"] + "_Scr")
-    .remove();
-  let taskElem = document.getElementById(id["fID"] + "," + id["sID"]);
-  taskElem.replaceWith(taskElem.cloneNode(true));
-  taskElem = document.getElementById(id["fID"] + "," + id["sID"]);
-  const newTaskScript = insertScript(
-    taskElem,
-    id["fID"] + "," + id["sID"] + "_Scr",
-    "/src/lib/data/task_data_manager.js"
-  );
-  passDataToScript(
-    newTaskScript,
-    { taskData: true },
-    id["fID"] + "," + id["sID"]
-  );
+function insertData(data) {
+    taskNameElem.value = data["task_name"];
+    taskDescElem.value = data["description"];
+    taskColorElem.value = data["color"];
+}
+
+selectTagButton.addEventListener("click", (e) => {
+    tagSelectWindow.style.display = "block";
+    passDataToScript(tagSelectScript, {
+        taskID: JSON.stringify(id),
+        taskData: JSON.stringify(taskWindowData),
+        id,
+    });
 });
+// If the X button is called, discard all changes
+const closePopup = document.getElementById("task_popup_X");
+closePopup.addEventListener("click", () => {
+    activeWindow = lastActiveWindow;
+    lastActiveWindow = "taskInfoWindow";
+    element.style.display = "none";
+    taskNameElem.value = "";
+    taskDescElem.value = "";
+    taskColorElem.value = "";
+});
+
+saveTaskDataBtn.addEventListener("click", (e) => {
+    if (activeWindow !== "taskInfoWindow") {
+        return;
+    }
+    const globalID = id["fID"] + "," + id["sID"];
+    saveTaskData(globalID, taskWindowData, true);
+});
+
+removeTaskBtn.addEventListener("click", () => {
+    const globalID = id["fID"] + "," + id["sID"];
+    removeTask(id);
+    document.getElementById(globalID).remove();
+    activeWindow = lastActiveWindow;
+    lastActiveWindow = "taskInfoWindow";
+    element.style.display = "none";
+    taskNameElem.value = "";
+    taskDescElem.value = "";
+    taskColorElem.value = "";
+});
+
+moveTaskUp.addEventListener("click", () => {
+    const globalID = id["fID"] + "," + id["sID"];
+    if (id["sID"] < 1) return;
+    moveTaskDataUp(id);
+    reloadTask(globalID);
+    const _globalID = id["fID"] + "," + (id["sID"] - 1);
+    reloadTask(_globalID);
+    saveTaskData(_globalID, taskWindowData, false);
+});
+
+moveTaskDown.addEventListener("click", () => {
+    const globalID = id["fID"] + "," + id["sID"];
+    if (id["sID"] === getTaskCount(id["fID"]) - 1 + "") return;
+    moveTaskDataDown(id);
+    reloadTask(globalID);
+    const _globalID = id["fID"] + "," + (Number.parseInt(id["sID"]) + 1);
+    reloadTask(_globalID);
+    saveTaskData(_globalID, taskWindowData, false);
+});
+
+// Saves the enter values and clears the fields
+function saveTaskData(globalID, taskWindowData, _reloadTask) {
+    element.style.display = "none";
+    taskWindowData["task_name"] = taskNameElem.value;
+    taskWindowData["description"] = taskDescElem.value;
+    taskWindowData["color"] = taskColorElem.value;
+    taskNameElem.value = "";
+    taskDescElem.value = "";
+    taskColorElem.value = "";
+    if (_reloadTask) reloadTask(globalID, taskWindowData);
+}

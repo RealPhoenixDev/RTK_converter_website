@@ -1,50 +1,10 @@
 <header class="navbar">
     <div>Tag select</div>
-    <div class="nav_X" style="line-height: 2rem">[X]</div>
+    <div class="nav_X" id="tagSelectWindowClose">[X]</div>
 </header>
 <div class="window_content">
-    <form id="tagSelectForm">
-        <label
-            ><input type="checkbox" name="options" value="1" />
-            <div class="tag" id="{id}_T" style="border: violet 1px solid">
-                <div
-                    class="tag_color"
-                    id="{id}_T_C"
-                    style="background-color: violet"></div>
-                <div class="tag_text" id="{id}_T_Txt">school</div>
-            </div></label
-        ><br />
-        <label
-            ><input type="checkbox" name="options" value="1" />
-            <div class="tag" id="{id}_T" style="border: violet 1px solid">
-                <div
-                    class="tag_color"
-                    id="{id}_T_C"
-                    style="background-color: violet"></div>
-                <div class="tag_text" id="{id}_T_Txt">school</div>
-            </div></label
-        ><br />
-        <label
-            ><input type="checkbox" name="options" value="1" />
-            <div class="tag" id="{id}_T" style="border: violet 1px solid">
-                <div
-                    class="tag_color"
-                    id="{id}_T_C"
-                    style="background-color: violet"></div>
-                <div class="tag_text" id="{id}_T_Txt">school</div>
-            </div></label
-        ><br />
-        <label
-            ><input type="checkbox" name="options" value="1" />
-            <div class="tag" id="{id}_T" style="border: violet 1px solid">
-                <div
-                    class="tag_color"
-                    id="{id}_T_C"
-                    style="background-color: violet"></div>
-                <div class="tag_text" id="{id}_T_Txt">school</div>
-            </div></label
-        ><br />
-        <button id="createTagButton">Create a Tag</button>
-        <button id="createTagButton">Save</button>
-    </form>
+    <form id="tagSelectForm"></form>
+    <button id="createTagButton">Create a Tag</button>
+    <button id="removeTagButton">Remove selected tags</button>
+    <button id="submitTagButton">Save</button>
 </div>

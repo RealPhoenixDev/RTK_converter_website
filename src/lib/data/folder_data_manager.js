@@ -3,7 +3,7 @@ taskTemp = {
     description: "",
     date: Date.now(),
     tags: [],
-    color: "#F1F1F1",
+    color: "#FFFFFF",
 };
 
 folderIDArray = [];
@@ -35,8 +35,23 @@ folderDataArray.forEach((folder) => {
             { task_name: task["task_name"] },
             "/src/lib/data/task_data_manager.js"
         );
+
+        const folderNameElem = document.getElementById(folderID + "_N");
+        // Changes folder name on input in the name field
+        folderNameElem.addEventListener("input", () => {
+            setFolderName(folderID, folderNameElem.value);
+        });
+
         const scriptElement = document.getElementById(globalID + "_Scr");
         await passDataToScript(scriptElement, { taskData: true }, globalID);
+    });
+    //removes the folder from the data and reloads the board to update
+    const removeFolderBtn = document.getElementById(folderID + "_R");
+    removeFolderBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (activeWindow !== "taskBoard") return;
+        removeFolder(folderID);
+        initializeData();
     });
 });
 
@@ -44,12 +59,10 @@ createTaskButtonArray.forEach((button) => {
     const taskContainer = taskContainerArray.at(-1);
     const folderID = folderIDArray.at(-1);
     button.addEventListener("click", async (e) => {
-        console.log(data_temp);
         const taskCount = getTaskCount(folderID);
         taskContainerArray.push(taskTemp);
         const newTaskID = folderID + "," + taskCount;
         addTask(taskTemp, folderID);
-        console.log(taskContainerArray.length - 1);
         await insertTemplate(
             taskContainer,
             "/src/lib/templates/task.html",

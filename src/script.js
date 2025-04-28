@@ -9,6 +9,8 @@ function loadUsernameData() {
 
     if (!localStorage.getItem("username")) {
         container.style.display = "flex";
+        lastActiveWindow = activeWindow;
+        activeWindow = "usernameWindow";
         username_input.addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
                 event.preventDefault();
@@ -19,6 +21,9 @@ function loadUsernameData() {
             const username = username_input.value;
             localStorage.setItem("username", username);
             container.style.display = "none";
+            activeWindow = lastActiveWindow;
+            lastActiveWindow = "usernameWindow";
+
             username_span.innerHTML = localStorage.getItem("username");
         });
     }
@@ -27,4 +32,5 @@ function loadUsernameData() {
 
 document.addEventListener("loaded", () => {
     loadUsernameData();
+    activeWindow = "taskBoard";
 });

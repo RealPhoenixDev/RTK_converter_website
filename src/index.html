@@ -1,56 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Conventer tool website</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body style="position: relative">
-    <div class="window_container" id="mainWindowContainer"></div>
-    <div class="window_container" id="usernameWindowContainer"></div>
-    <div class="window_container" id="taskBoardContainer"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Conventer tool website</title>
+        <link rel="stylesheet" href="style.css" />
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    </head>
+    <body style="position: relative">
+        <div class="window_container" id="mainWindowContainer"></div>
+        <div class="window_container" id="usernameWindowContainer"></div>
+        <div class="window_container" id="taskBoardContainer"></div>
+        <div
+            class="window_container taskWindowContainer"
+            id="taskWindowContainer"
+            style="display: none"></div>
+    </body>
     <div class="window_container" id="tagSelectContainer"></div>
-    <div
-      class="window_container taskWindowContainer"
-      id="taskWindowContainer"
-      style="display: none"
-    ></div>
-  </body>
-  <script src="/src//lib/data/window_loader.js"></script>
-  <script src="/src/lib/data/data_manager.js"></script>
-  <script src="script.js"></script>
-  <script>
-    async function test() {
-      const _test = document.getElementById("folder_container");
-      for (let i = 0; i < getFolderCount(); i++) {
-        await insertTemplate(
-          _test,
-          "/src/lib/templates/folder.html",
-          i,
-          {
-            folderName: getFolderIndexKey(i),
-          },
-          "/src/lib/data/folder_data_manager.js"
-        );
-        const scriptElement = document.getElementById(i + "_Scr");
-        passDataToScript(scriptElement, { folderData: true }, i);
-      }
-    }
-    document.addEventListener("loaded", () => {
-      test();
-      insertScript(
-        document.body,
-        "taskInfoScr",
-        "/src/lib/data/task_info_manager.js"
-      );
-      insertScript(
-        document.body,
-        "tagSelectScr",
-        "/src/lib/data/tag_manager.js"
-      );
-    });
-  </script>
+    <div class="window_container" id="tagCreateContainer"></div>
+    <script src="/src//lib/data/window_loader.js"></script>
+    <script src="/src/lib/data/data_manager.js"></script>
+    <script src="script.js"></script>
+    <script>
+        async function initializeData() {
+            const boardContainer = document.getElementById("folder_container");
+            <!-- I did this because any other solution would take too much time I cannot be bothered -->
+            boardContainer.innerHTML = `<div class="folder_element" style="order: 2; border: none">
+        <div id="folder_create_button">
+            <button>
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M6 12H12M18 12H12M12 12V6M12 12V18"
+                            stroke="#7c4e6c"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </div>`;
+            for (let i = 0; i < getFolderCount(); i++) {
+                await insertTemplate(
+                    boardContainer,
+                    "/src/lib/templates/folder.html",
+                    i,
+                    {
+                        folderName: getFolderIndexKey(i),
+                    },
+                    "/src/lib/data/folder_data_manager.js"
+                );
+                const scriptElement = document.getElementById(i + "_Scr");
+                passDataToScript(scriptElement, { folderData: true }, i);
+            }
+        }
+        document.addEventListener("loaded", () => {
+            initializeData();
+            insertScript(
+                document.body,
+                "taskInfoScr",
+                "/src/lib/data/task_info_manager.js"
+            );
+            insertScript(
+                document.body,
+                "tagSelectScr",
+                "/src/lib/data/tag_manager.js"
+            );
+        });
+    </script>
 </html>
-
-<script src="the path here???????"></script>

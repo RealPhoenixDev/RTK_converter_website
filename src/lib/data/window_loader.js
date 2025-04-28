@@ -5,6 +5,7 @@ const usernameWindowContainer = document.getElementById(
 const taskBoardContainer = document.getElementById("taskBoardContainer");
 const taskWindowContainer = document.getElementById("taskWindowContainer");
 const tagSelectContainer = document.getElementById("tagSelectContainer");
+let tagCreateContainer = document.getElementById("tagCreateContainer");
 
 const loadedEvent = new Event("loaded");
 
@@ -33,6 +34,11 @@ async function loadWindows() {
         "/src/lib/windows/tagSelectWindow.html"
     );
     tagSelectContainer.insertAdjacentHTML("afterbegin", tagSelectWindow);
+    const tagCreateWindow = await getWindow(
+        "/src/lib/windows/tagCreateWindow.html"
+    );
+    tagCreateContainer.insertAdjacentHTML("afterbegin", tagCreateWindow);
+
     document.dispatchEvent(loadedEvent);
 }
 
