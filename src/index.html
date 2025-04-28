@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Conventer tool website</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body style="position: relative">
-        <div class="window_container" id="mainWindowContainer"></div>
-        <div class="window_container" id="usernameWindowContainer"></div>
-        <div class="window_container" id="taskBoardContainer"></div>
-        <div class="window_container" id="tagSelectContainer"></div>
-        <div
-            class="window_container taskWindowContainer"
-            id="taskWindowContainer"
-            style="display: none"></div>
-    </body>
-    <script src="/src//lib/data/window_loader.js"></script>
-    <script src="/src/lib/data/data_manager.js"></script>
-    <script src="script.js"></script>
-    <script>
-        async function test() {
-            const _test = document.getElementById("folder_container");
-            for (let i = 0; i < getFolderCount(); i++) {
-                await insertTemplate(
-                    _test,
-                    "/src/lib/templates/folder.html",
-                    i,
-                    {
-                        folderName: getFolderIndexKey(i),
-                    },
-                    "/src/lib/data/folder_data_manager.js"
-                );
-                const scriptElement = document.getElementById(i + "_Scr");
-                passDataToScript(scriptElement, { folderData: true }, i);
-            }
-        }
-        document.addEventListener("loaded", () => {
-            test();
-            insertScript(
-                document.body,
-                "taskInfoScr",
-                "/src/lib/data/task_info_manager.js"
-            );
-            insertScript(
-                document.body,
-                "tagSelectScr",
-                "/src/lib/data/tag_manager.js"
-            );
-        });
-    </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conventer tool website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="position: relative">
+    <div class="window_container" id="mainWindowContainer"></div>
+    <div class="window_container" id="usernameWindowContainer"></div>
+    <div class="window_container" id="taskBoardContainer"></div>
+    <div class="window_container" id="tagSelectContainer"></div>
+    <div
+      class="window_container taskWindowContainer"
+      id="taskWindowContainer"
+      style="display: none"
+    ></div>
+  </body>
+  <script src="/src//lib/data/window_loader.js"></script>
+  <script src="/src/lib/data/data_manager.js"></script>
+  <script src="script.js"></script>
+  <script>
+    async function test() {
+      const _test = document.getElementById("folder_container");
+      for (let i = 0; i < getFolderCount(); i++) {
+        await insertTemplate(
+          _test,
+          "/src/lib/templates/folder.html",
+          i,
+          {
+            folderName: getFolderIndexKey(i),
+          },
+          "/src/lib/data/folder_data_manager.js"
+        );
+        const scriptElement = document.getElementById(i + "_Scr");
+        passDataToScript(scriptElement, { folderData: true }, i);
+      }
+    }
+    document.addEventListener("loaded", () => {
+      test();
+      insertScript(
+        document.body,
+        "taskInfoScr",
+        "/src/lib/data/task_info_manager.js"
+      );
+      insertScript(
+        document.body,
+        "tagSelectScr",
+        "/src/lib/data/tag_manager.js"
+      );
+    });
+  </script>
 </html>
+
+<script src="the path here???????"></script>
