@@ -52,19 +52,6 @@ function renameKey(obj, oldKey, newKey) {
     return newObj;
 }
 
-function getFolderCount() {
-    return Object.keys(data_temp).length;
-}
-
-function getFolderIndexKey(index) {
-    return Object.keys(data_temp)[index];
-}
-
-function getTaskCount(folderID) {
-    const folderData = data_temp[getFolderIndexKey(folderID)];
-    return folderData.length;
-}
-
 function parseID(id) {
     const attributes = id.split("_");
     const globalID = attributes[0].split(",");
@@ -76,6 +63,10 @@ function parseID(id) {
         }
     }
     return parsedGlobalID;
+}
+function getTaskCount(folderID) {
+    const folderData = data_temp[getFolderIndexKey(folderID)];
+    return folderData.length;
 }
 
 function addTask(data, folderID) {
@@ -129,6 +120,14 @@ function moveTaskDataDown(globalID) {
         tempTaskBelow;
 }
 
+function getFolderCount() {
+    return Object.keys(data_temp).length;
+}
+
+function getFolderIndexKey(index) {
+    return Object.keys(data_temp)[index];
+}
+
 function getFolderData(folderID) {
     return data_temp[getFolderIndexKey(folderID)];
 }
@@ -136,6 +135,10 @@ function getFolderData(folderID) {
 function setFolderName(folderID, name) {
     data_temp = renameKey(data_temp, getFolderIndexKey(folderID), name);
     console.log(data_temp);
+}
+
+function addFolder(name) {
+    data_temp[name] = [];
 }
 
 function removeFolder(folderID) {
