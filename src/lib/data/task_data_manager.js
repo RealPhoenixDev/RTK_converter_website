@@ -12,44 +12,39 @@ taskScript = document.currentScript;
 i = 0;
 
 taskElementArray.forEach((val) => {
-    const id = taskIDArray.at(-1);
-    const globalID = id["fID"] + "," + id["sID"];
-    const windowElement = document.getElementById("taskWindowContainer");
-    const taskInfoScript = document.getElementById("taskInfoScr");
-    let taskData = taskDataArray.at(-1);
-    // On click passes data about itself to the task editor window
-    val.addEventListener("click", async (e) => {
-        await passDataToScript(
-            taskInfoScript,
-            {
-                taskID: JSON.stringify(id),
-                taskData: JSON.stringify(taskData),
-            },
-            globalID
-        );
-        windowElement.style.display = "flex";
-    });
+  const id = taskIDArray.at(-1);
+  const globalID = id["fID"] + "," + id["sID"];
+  const windowElement = document.getElementById("taskWindowContainer");
+  const taskInfoScript = document.getElementById("taskInfoScr");
+  let taskData = taskDataArray.at(-1);
+  // On click passes data about itself to the task editor window
+  val.addEventListener("click", async (e) => {
+    await passDataToScript(
+      taskInfoScript,
+      {
+        taskID: JSON.stringify(id),
+        taskData: JSON.stringify(taskData),
+      },
+      globalID
+    );
+    windowElement.style.display = "flex";
+  });
 
-    //Updating task name and color
-    const taskNameElem = document.getElementById(globalID + "_N");
-    taskNameElem.innerHTML = taskData["task_name"];
-    val.style.backgroundColor = taskData["color"];
-    const tagContainer = document.getElementById(globalID + "_T");
-    const tags = taskData["tags"];
-    tagContainer.innerHTML = "";
-    tags.forEach(async (j) => {
-        j = parseID(j)["fID"];
-        await insertTemplate(
-            tagContainer,
-            "/src/lib/templates/tag.html",
-            `${j}`,
-            {
-                color: tagData[Object.keys(tagData)[j]],
-                name: Object.keys(tagData)[j],
-            }
-        );
+  //Updating task name and color
+  const taskNameElem = document.getElementById(globalID + "_N");
+  taskNameElem.innerHTML = taskData["task_name"];
+  val.style.backgroundColor = taskData["color"];
+  const tagContainer = document.getElementById(globalID + "_T");
+  const tags = taskData["tags"];
+  tagContainer.innerHTML = "";
+  tags.forEach(async (j) => {
+    j = parseID(j)["fID"];
+    await insertTemplate(tagContainer, "./lib/templates/tag.html", `${j}`, {
+      color: tagData[Object.keys(tagData)[j]],
+      name: Object.keys(tagData)[j],
     });
+  });
 
-    i++;
+  i++;
 });
 i = 0;

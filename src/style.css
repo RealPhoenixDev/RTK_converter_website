@@ -3,393 +3,392 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Inter";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter";
 }
 
 input {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 body {
-    min-height: 100svh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #f0f0f0;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0f0f0;
 }
 
 /* Start of general element styles */
 
 .navbar {
-    display: flex;
-    align-items: center;
-    padding-left: 1rem;
-    padding-right: 0.8rem;
-    justify-content: space-between;
-    width: 100%;
-    height: 2.5rem;
-    background-color: #e8c5e5;
-    color: #1c1d1b;
-    font-weight: 400;
-    border-radius: 6px 6px 0px 0px;
-    border-bottom: 2px #c889b5 solid;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 0.8rem;
+  justify-content: space-between;
+  width: 100%;
+  height: 2.5rem;
+  background-color: #e8c5e5;
+  color: #1c1d1b;
+  font-weight: 400;
+  border-radius: 6px 6px 0px 0px;
+  border-bottom: 2px #c889b5 solid;
 
-    .nav_X {
-        font-weight: bolder;
-        height: 100%;
-        line-height: 2.5rem;
-    }
+  .nav_X {
+    font-weight: bolder;
+    height: 100%;
+    line-height: 2.5rem;
+  }
 }
 
 .window_content {
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    border: none !important;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: none !important;
 }
 
 .window_container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    background-color: #f0f0f0;
-    border: 2px #c889b5 solid;
-    border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  border: 2px #c889b5 solid;
+  border-radius: 8px;
 }
 
 /* End of general element styles */
 /* Start of Greeting Window style */
 
 #mainWindowContainer {
-    display: flex;
-    flex-direction: column;
-    max-width: 960px;
-    width: 100%;
-    min-height: 600px;
-    height: 600px;
-    filter: drop-shadow(0px 0px 4px #00000071);
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  width: 100%;
+  min-height: 600px;
+  height: 600px;
+  filter: drop-shadow(0px 0px 4px #00000071);
 
-    #greeting_text {
-        font-weight: 400;
-        text-align: center;
-        margin: 0.5rem 0rem;
-    }
+  #greeting_text {
+    font-weight: 400;
+    text-align: center;
+    margin: 0.5rem 0rem;
+  }
 }
 
 #analytics_container {
-    padding: 0.5rem;
-    display: grid;
-    grid-template-columns: repeat(3, 300px);
-    grid-template-rows: repeat(4, 110px);
-    gap: 8px;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(4, 110px);
+  gap: 8px;
 }
 
 #daily_tasks {
-    grid-column: 1 / span 1;
-    grid-row-start: 1;
-    grid-row-end: 5;
-    border: #736eae 2px solid;
-    border-radius: 8px;
-    padding: 8px;
-    background-color: #bdb9ee;
-    overflow: scroll;
+  grid-column: 1 / span 1;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  border: #736eae 2px solid;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #bdb9ee;
+  overflow: scroll;
 
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-    #daily_tasks_text {
-        text-align: center;
-        margin: 0.5rem 0rem;
-        font-size: 1.1rem;
-    }
+  #daily_tasks_text {
+    text-align: center;
+    margin: 0.5rem 0rem;
+    font-size: 1.1rem;
+  }
 }
 
 #perf_chart_container {
-    grid-column: 2 / span 2;
-    grid-row: 3 / span 2;
-    background-color: red;
+  grid-column: 2 / span 2;
+  grid-row: 3 / span 2;
+  background-color: red;
 }
 
 /* End of Greeting Window style */
 /* Start of Username Window style  */
 
 #usernameWindowContainer {
-    width: 300px;
-    height: 200px;
-    display: none;
-    gap: 16px;
-    flex-direction: column;
-    align-items: center;
-    header {
-        height: 2rem;
-    }
-    input {
-        border-radius: 4px;
-        height: 1.8rem;
-        border: 2px solid #c889b5;
-    }
-    accent-color: #736eae;
-    button {
-        padding: 1rem 1.5rem;
-        background-color: #736eae;
-        color: #f0f0f0;
-        border-radius: 8px;
-        border: none;
-        width: 90%;
-    }
+  width: 300px;
+  height: 200px;
+  display: none;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  header {
+    height: 2rem;
+  }
+  input {
+    border-radius: 4px;
+    height: 1.8rem;
+    border: 2px solid #c889b5;
+  }
+  accent-color: #736eae;
+  button {
+    padding: 1rem 1.5rem;
+    background-color: #736eae;
+    color: #f0f0f0;
+    border-radius: 8px;
+    border: none;
+    width: 90%;
+  }
 }
 
 .task_container {
-    height: 100%;
-    width: 100%;
-    flex-grow: 1;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 8px;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
 }
 
 .task {
-    padding: 8px;
-    width: 100%;
-    min-height: 30px;
-    height: max-content;
-    border-radius: 3px;
+  padding: 8px;
+  width: 100%;
+  min-height: 30px;
+  height: max-content;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  border: #736eae00 2px solid;
+  background-color: #e0e0e0;
+  .task_tags {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 10px;
-    border: #736eae00 2px solid;
-    background-color: #e0e0e0;
-    .task_tags {
-        display: flex;
-        gap: 4px;
-        flex-wrap: wrap;
-    }
-    .task_name {
-        font-size: 0.9rem;
-        line-height: 0.9rem;
-    }
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .task_name {
+    font-size: 0.9rem;
+    line-height: 0.9rem;
+  }
 }
 
 .task:hover {
-    border: #736eae 2px solid;
+  border: #736eae 2px solid;
 }
 
 .tag {
-    display: flex;
-    min-width: 1rem;
-    height: 1.1rem;
+  display: flex;
+  min-width: 1rem;
+  height: 1.1rem;
+  border-radius: 16px;
+  background-color: #f0f0f0;
+  .tag_text {
+    padding: 0rem 0.5rem;
+    height: 90%;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
     border-radius: 16px;
-    background-color: #f0f0f0;
-    .tag_text {
-        padding: 0rem 0.5rem;
-        height: 90%;
-        line-height: 1rem;
+    padding-right: 0.5rem;
+  }
 
-        font-size: 0.8rem;
-        text-align: center;
-        border-radius: 16px;
-        padding-right: 0.5rem;
-    }
-
-    .tag_color {
-        height: 1rem;
-        width: 1rem;
-        border-radius: 16px;
-    }
+  .tag_color {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 16px;
+  }
 }
 
 /* Board page */
 
 #taskBoardContainer {
-    max-width: 90svw;
-    max-height: 90svh;
-    width: 100%;
-    height: 100%;
+  max-width: 90svw;
+  max-height: 90svh;
+  width: 100%;
+  height: 100%;
 }
 
 #folder_container {
-    gap: 8px;
-    display: flex;
-    overflow: scroll;
+  gap: 8px;
+  display: flex;
+  overflow: scroll;
 }
 
 .folder_element {
-    min-width: 300px;
-    max-width: 300px;
-    min-height: 120px;
-    height: fit-content;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 120px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border: #d4cdcd 2px solid;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  overflow-wrap: anywhere;
+  #folderCreateBtn {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
-    border: #d4cdcd 2px solid;
-    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    button {
+      justify-self: flex-end;
+      width: 3rem;
+      height: 3rem;
+      border: none;
+      border-radius: 4rem;
+      background-color: #d0adc4;
+      filter: drop-shadow(2px 2px 2px #00000036);
+    }
+  }
+
+  .folder_header {
+    padding: 8px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    button {
+      border: 2px solid #c889b5;
+      border-radius: 8px;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .task_folder_name {
+    width: 95%;
+    text-align: center;
+    padding: 0.5rem 0rem;
+    border: none;
     background-color: #f0f0f0;
-    overflow-wrap: anywhere;
-    #folderCreateBtn {
-        width: 100%;
-        height: 100%;
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        button {
-            justify-self: flex-end;
-            width: 3rem;
-            height: 3rem;
-            border: none;
-            border-radius: 4rem;
-            background-color: #d0adc4;
-            filter: drop-shadow(2px 2px 2px #00000036);
-        }
-    }
-
-    .folder_header {
-        padding: 8px;
-        gap: 8px;
-        display: flex;
-        align-items: center;
-        button {
-            border: 2px solid #c889b5;
-            border-radius: 8px;
-            width: 2rem;
-            height: 2rem;
-        }
-    }
-
-    .task_folder_name {
-        width: 95%;
-        text-align: center;
-        padding: 0.5rem 0rem;
-        border: none;
-        background-color: #f0f0f0;
-        font-size: 1rem;
-        overflow-wrap: break-word;
-    }
+    font-size: 1rem;
+    overflow-wrap: break-word;
+  }
 }
 
 button:active {
-    transform: scale(0.95);
-    filter: drop-shadow(1px 1px 2px #00000036);
+  transform: scale(0.95);
+  filter: drop-shadow(1px 1px 2px #00000036);
 }
 
 .add_task {
-    padding-left: 1rem;
-    width: 100%;
-    height: 2rem;
-    border: none;
-    text-align: start;
-    background-color: #00000028;
-    border-radius: 4px;
+  padding-left: 1rem;
+  width: 100%;
+  height: 2rem;
+  border: none;
+  text-align: start;
+  background-color: #00000028;
+  border-radius: 4px;
 }
 
 .add_task:hover {
-    background-color: #929292dc;
+  background-color: #929292dc;
 }
 
 /* Style for task popup window */
 
 .taskWindowContainer {
-    width: 400px;
-    height: 450px;
+  width: 400px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  input,
+  textarea {
+    padding: 0.2rem;
+    border-radius: 4px;
+    border: 2px solid #c889b5;
+    outline: none;
+  }
+  button {
+    border: 2px solid #c889b5;
+    border-radius: 8px;
+    padding: 0.2rem 0.5rem;
+    background-color: #e8c5e5;
+    width: 100px;
+  }
+  footer {
+    gap: 8px;
+    padding: 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    input,
-    textarea {
-        padding: 0.2rem;
-        border-radius: 4px;
-        border: 2px solid #c889b5;
-        outline: none;
+    justify-content: center;
+    #taskPositionButtons {
+      gap: 8px;
+      display: flex;
+      button {
+        width: 2rem;
+        height: 2rem;
+      }
     }
-    button {
-        border: 2px solid #c889b5;
-        border-radius: 8px;
-        padding: 0.2rem 0.5rem;
-        background-color: #e8c5e5;
-        width: 100px;
-    }
-    footer {
-        gap: 8px;
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
-        #taskPositionButtons {
-            gap: 8px;
-            display: flex;
-            button {
-                width: 2rem;
-                height: 2rem;
-            }
-        }
-    }
+  }
 }
 
 #inputTaskDesc {
-    resize: none;
-    height: 8rem;
+  resize: none;
+  height: 8rem;
 }
 
 .color_select {
-    width: 2rem;
-    height: 2rem;
-    border: 2px solid #c889b5;
-    border-radius: 4rem !important;
-    padding: 0px !important;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #c889b5;
+  border-radius: 4rem !important;
+  padding: 0px !important;
 }
 
 /* Style for tag select window */
 
 #tagSelectContainer {
-    display: none;
-    width: 200px;
-    #tagSelectForm {
-        gap: 8px;
-        display: flex;
-        flex-direction: column;
-        padding-left: 1rem;
-        label {
-            display: flex;
-            gap: 8px;
-        }
+  display: none;
+  width: 200px;
+  #tagSelectForm {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    label {
+      display: flex;
+      gap: 8px;
     }
-    button {
-        margin-top: 4px;
-        border: 2px solid #c889b5;
-        border-radius: 8px;
-        padding: 0.2rem 0.5rem;
-        background-color: #e8c5e5;
-    }
+  }
+  button {
+    margin-top: 4px;
+    border: 2px solid #c889b5;
+    border-radius: 8px;
+    padding: 0.2rem 0.5rem;
+    background-color: #e8c5e5;
+  }
 }
 
 #tagCreateContainer {
-    display: none;
-    .window_content {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+  display: none;
+  .window_content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-    #tagNameInput {
-        width: 8rem;
-        border: 2px solid #c889b5;
-        border-radius: 4px;
-    }
+  #tagNameInput {
+    width: 8rem;
+    border: 2px solid #c889b5;
+    border-radius: 4px;
+  }
 
-    button {
-        border: 2px solid #c889b5;
-        border-radius: 8px;
-        padding: 0.2rem 0.5rem;
-        background-color: #e8c5e5;
-    }
+  button {
+    border: 2px solid #c889b5;
+    border-radius: 8px;
+    padding: 0.2rem 0.5rem;
+    background-color: #e8c5e5;
+  }
 }
