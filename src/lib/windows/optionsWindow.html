@@ -1,25 +1,36 @@
 <header class="navbar">
-    <div>Opcijas</div>
-    <div class="nav_X" style="line-height: 2rem">[X]</div>
+  <div>Opcijas</div>
+  <div class="nav_X" id="settingsCloseBtn" style="line-height: 2rem">[X]</div>
 </header>
 <div class="window_content">
-    <div>
-        <span>Importēt datus</span>
-        <input type="file" name="" id="" />
-    </div>
-    <div>
-        <span>Eksportēt datus</span>
-        <button></button>
-    </div>
-    <div>
-        <span>Piezīmju dēļa fona krāsa</span>
-        <input type="color" id="" />
-    </div>
-    <div>
-        <span>Sākuma ekrāna fona krāsa</span>
-        <input type="color" name="" id="" />
-    </div>
-    <div>
-        <span></span>
-    </div>
+  <div>
+    <span>Importēt datus</span>
+    <input type="file" id="importDataBtn" />
+  </div>
+  <div>
+    <span>Eksportēt datus</span>
+    <button id="exportDataBtn">Eksportēt</button>
+  </div>
+  <div>
+    <span>Clear data</span>
+    <button id="clearDataBtn">Dzēst visus datus</button>
+  </div>
+  <div>
+    <span>Piezīmju dēļa fona krāsa</span>
+    <input
+      type="color"
+      id="taskBoardBgColor"
+      class="color_select"
+      value="#FFFFFF"
+    />
+  </div>
+  <div>
+    <span>Sākuma ekrāna fona krāsa</span>
+    <input
+      type="color"
+      id="desktopBgColor"
+      class="color_select"
+      value="#FFFFFF"
+    />
+  </div>
 </div>

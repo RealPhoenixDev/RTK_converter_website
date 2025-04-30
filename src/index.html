@@ -1,27 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Conventer tool website</title>
-        <link rel="stylesheet" href="./style.css" />
-        <script
-            type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
-    </head>
-    <body style="position: relative">
-        <div class="window_container" id="usernameWindowContainer"></div>
-        <div class="window_container" id="taskBoardContainer"></div>
-        <div
-            class="window_container taskWindowContainer"
-            id="taskWindowContainer"
-            style="display: none"></div>
-    </body>
-    <div class="window_container" id="tagSelectContainer"></div>
-    <div class="window_container" id="tagCreateContainer"></div>
-    <div class="window_container" id="optionContainer"></div>
-    <script src="./lib/data/window_loader.js"></script>
-    <script src="./lib/data/data_manager.js"></script>
-    <script src="./script.js"></script>
-    <script src="./lib/data/folder_loader.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piezīmju dēlis</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"
+    ></script>
+  </head>
+  <body style="position: relative">
+    <div class="shortcut" id="openTaskBoardBtn">
+      <button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-app-window-icon lucide-app-window"
+        >
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="M10 4v4" />
+          <path d="M2 8h20" />
+          <path d="M6 4v4" />
+        </svg>
+      </button>
+      <span>Piezīmju dēlis - Shortcut</span>
+    </div>
+    <div class="shortcut" id="openSettingsBtn">
+      <button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-settings-icon lucide-settings"
+        >
+          <path
+            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+          />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </button>
+      <span>Iestatījumi</span>
+    </div>
+    <!-- <div class="window_container" id="usernameWindowContainer"></div> -->
+    <div
+      class="window_container"
+      id="taskBoardContainer"
+      style="display: none"
+    ></div>
+    <div
+      class="window_container taskWindowContainer"
+      id="taskWindowContainer"
+      style="display: none"
+    ></div>
+  </body>
+  <div class="window_container" id="tagSelectContainer"></div>
+  <div class="window_container" id="tagCreateContainer"></div>
+  <div class="window_container" id="optionContainer"></div>
+  <script src="./lib/data/window_loader.js"></script>
+  <script src="./lib/data/data_manager.js"></script>
+  <script src="./script.js"></script>
+  <script src="./lib/data/folder_loader.js"></script>
 </html>
